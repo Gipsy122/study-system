@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeFlow Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <h1>TimeFlow <span>Dashboard</span></h1>
+        </div>
+        <div class="mode-toggle">
+            <span id="modeLabel">Admin Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="roleSwitch" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
 
+    <main class="container">
+        <section class="global-timer-card">
+            <h2>Total Daily Break Time</h2>
+            <div id="globalTimer" class="timer-display">210:00</div>
+            <p class="subtitle">Deductions apply when activity limits are exceeded</p>
+        </section>
+
+        <div class="grid" id="activitiesGrid">
+            </div>
+
+        <section class="coupon-section">
+            <div class="admin-only" id="couponCreator">
+                <h3>Issue Coupon</h3>
+                <div class="coupon-form">
+                    <input type="text" id="cpnName" placeholder="Coupon Name">
+                    <input type="number" id="cpnValue" placeholder="Minutes">
+                    <button onclick="createCoupon()">Create</button>
+                </div>
+            </div>
+            
+            <h3>Available Coupons</h3>
+            <div id="couponList" class="coupon-grid">
+                </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
