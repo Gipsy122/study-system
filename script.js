@@ -222,3 +222,12 @@ class DisciplineSystem {
 }
 
 const system = new DisciplineSystem();
+
+import { ref, onValue } from "firebase/database";
+import { db } from "./firebase"; // your config file
+
+const dataRef = ref(db, 'path/to/data');
+onValue(dataRef, (snapshot) => {
+  const data = snapshot.val();
+  updateUI(data); // This runs EVERY time the admin changes data
+});
