@@ -3,6 +3,29 @@
  * Manages Master Pool and Category Timers
  */
 
+import { ref, onValue, set } from "firebase/database";
+import { db } from "./firebase.js";
+
+// 1. Path to your data
+const studyDataRef = ref(db, 'study_material/');
+
+// 2. LISTEN for changes (This keeps Admin and User in sync)
+onValue(studyDataRef, (snapshot) => {
+    const data = snapshot.val();
+    console.log("Data updated in real-time:", data);
+    
+    // Logic to update your HTML/UI goes here
+    // document.getElementById('display').innerText = data.content;
+});
+
+// 3. Example function for Admin to update data
+function updateSystem(newData) {
+    set(ref(db, 'study_material/'), {
+        content: newData,
+        lastUpdated: Date.now()
+    });
+}
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"; // If using Auth
 import { getFirestore } from "firebase/firestore"; // If using Firestore
