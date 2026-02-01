@@ -3,6 +3,28 @@
  * Manages Master Pool and Category Timers
  */
 
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth"; // If using Auth
+import { getFirestore } from "firebase/firestore"; // If using Firestore
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "study-system-29.firebaseapp.com",
+  databaseURL: "https://study-system-29-default-rtdb.firebaseio.com",
+  projectId: "study-system-29",
+  storageBucket: "study-system-29.firebasestorage.app",
+  messagingSenderId: "407118949554",
+  appId: "1:407118949554:web:17eeecc4c20db90da22dab"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Export services to use them in other files
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export default app;
+
 const CONFIG = {
     masterInitial: 210 * 60, // 3.5 hours in seconds
     categories: [
